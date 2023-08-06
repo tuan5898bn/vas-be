@@ -1,5 +1,6 @@
 package com.vaccineadminsystem.repository;
 
+import com.vaccineadminsystem.dto.NewDetailDto;
 import com.vaccineadminsystem.entity.News;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

@@ -1,5 +1,6 @@
 package com.vaccineadminsystem.service;
 
+import com.vaccineadminsystem.dto.NewDetailDto;
 import com.vaccineadminsystem.dto.NewsDto;
 import com.vaccineadminsystem.entity.News;
 import com.vaccineadminsystem.exception.ConstraintException;
@@ -14,6 +15,8 @@ public interface INewsService {
 	public boolean saveNews(NewsDto newsDto);
 	
 	public NewsDto findNewsById(String id);
+
+	public NewDetailDto getDetailNew(String id);
 	
 	NewsDto update(String newsId,NewsDto newsDto);
 	
