@@ -1,9 +1,11 @@
 package com.vaccineadminsystem.service.imp;
 
 import com.vaccineadminsystem.converter.ConvertNews;
+import com.vaccineadminsystem.dto.NewDetailDto;
 import com.vaccineadminsystem.dto.NewsDto;
 import com.vaccineadminsystem.entity.News;
 import com.vaccineadminsystem.exception.ConstraintException;
+import com.vaccineadminsystem.repository.NewsDetailDtoRepo;
 import com.vaccineadminsystem.repository.NewsRepository;
 import com.vaccineadminsystem.service.INewsService;
 import com.vaccineadminsystem.util.ErrorMess;
@@ -30,6 +32,9 @@ public class NewsServiceImpl implements INewsService {
 
     @Autowired
     private NewsRepository newsRepository;
+
+    @Autowired
+    private NewsDetailDtoRepo newsDetailDtoRepo;
 
     @Autowired
     private ConvertNews convertNews;
@@ -105,4 +110,15 @@ public class NewsServiceImpl implements INewsService {
             throw new ConstraintException(ErrorMess.NEWS_CONSTRAINT);
         }
 	}
+
+    /**
+     * @param id of News need get from database
+     * @return object News has id input
+     *
+     */
+    @Override
+    public NewDetailDto getDetailNew(String id) {
+        Optional<NewDetailDto> news = newsDetailDtoRepo.getDetailNew(id);
+        return news.orElse(null);
+    }
 }

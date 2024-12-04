@@ -1,6 +1,7 @@
 package com.vaccineadminsystem.controller;
 
 import com.vaccineadminsystem.dto.MessageRes;
+import com.vaccineadminsystem.dto.NewDetailDto;
 import com.vaccineadminsystem.dto.NewsDto;
 import com.vaccineadminsystem.entity.News;
 import com.vaccineadminsystem.exception.ConstraintException;
@@ -69,6 +70,15 @@ public class NewsController {
     public ResponseEntity<News> deleteEmployeeById(@RequestParam List<String> ids) throws ConstraintException {
         newsService.deleteByIds(ids);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/news/detail/{id}")
+    public ResponseEntity<NewDetailDto> getNewsDetailbyId(@PathVariable String id) {
+        NewDetailDto newsDto = newsService.getDetailNew(id);
+        if(newsDto != null) {
+            return new ResponseEntity<>(newsDto, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 }

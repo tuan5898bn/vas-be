@@ -8,8 +8,8 @@ import java.util.Date;
 public class NewsDto {
 	private String id;
 
-	@NotNull(message = " Content cannot be null")
-	@NotEmpty(message = "Content cannot be empty")
+	@NotNull(message = " Content can't be null")
+	@NotEmpty(message = "Content can't be empty")
 	private String content;
 
 	@NotNull(message = "Preview cannot be null")
